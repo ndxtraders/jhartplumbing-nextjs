@@ -12,9 +12,9 @@ interface JsonLdProps {
 /**
  * Renders one or more <script type="application/ld+json"> tags inline.
  *
- * The site has no other JSON-LD today — this is the project's introduction
- * of structured data. SPA-rendered (Google handles JS-injected JSON-LD,
- * but accept the tradeoff per the strategy docs; revisit if SSR is added).
+ * Marked "use client" for co-location with content components, but Next.js
+ * App Router SSRs "use client" components — these tags appear in the initial
+ * HTML response. A future refactor could move this to a Server Component.
  *
  * Usage:
  *   <JsonLd data={localBusiness} />
