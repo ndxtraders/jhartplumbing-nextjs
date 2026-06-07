@@ -28,7 +28,13 @@ const defaultNavItems: NavItem[] = [
           { label: "New Construction", href: "/services/plumbing/new-construction" },
         ],
       },
-      { label: "HVAC", href: "/services/hvac" },
+      {
+        label: "HVAC",
+        href: "/services/hvac",
+        children: [
+          { label: "Bryant Heating & Cooling", href: "/services/hvac/bryant-heating-cooling" },
+        ],
+      },
       { label: "Radiant Heating", href: "/services/radiant-heating" },
       { label: "Water Treatment", href: "/services/water-treatment" },
     ],
@@ -51,9 +57,10 @@ export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobServicesOpen, setMobServicesOpen] = useState(false);
   const [mobPlumbingOpen, setMobPlumbingOpen] = useState(false);
+  const [mobHvacOpen, setMobHvacOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [plumbingFlyoutOpen, setPlumbingFlyoutOpen] = useState(false);
+  const [activeFlyout, setActiveFlyout] = useState<string | null>(null);
 
   const pathname = usePathname();
 
@@ -71,7 +78,7 @@ export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
     closeMobile();
   };
 
-  const closeMobile = () => { setMobileOpen(false); setMobServicesOpen(false); setMobPlumbingOpen(false); };
+  const closeMobile = () => { setMobileOpen(false); setMobServicesOpen(false); setMobPlumbingOpen(false); setMobHvacOpen(false); };
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -144,7 +151,7 @@ export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
                         "flex items-center gap-2 px-7 text-sm font-semibold uppercase tracking-wide hover:bg-white/10 hover:text-white transition-all duration-200",
                         isServicesActive ? "text-white bg-white/10" : "text-white/90"
                       )}
-                      onClick={() => { setServicesOpen(!servicesOpen); setPlumbingFlyoutOpen(false); }}
+                      onClick={() => { setServicesOpen(!servicesOpen); setActiveFlyout(null); }}
                     >
                       {item.label}
                       <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", servicesOpen && "rotate-180")} />
@@ -155,8 +162,8 @@ export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
                           <div
                             key={ci}
                             className="relative"
-                            onMouseEnter={() => child.children && setPlumbingFlyoutOpen(true)}
-                            onMouseLeave={() => child.children && setPlumbingFlyoutOpen(false)}
+                            onMouseEnter={() => child.children && setActiveFlyout(child.label)}
+                            onMouseLeave={() => child.children && setActiveFlyout(null)}
                           >
                             <Link
                               href={child.href}
@@ -165,18 +172,19 @@ export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
                                 isActive(child.href) ? "text-primary bg-light-blue" : "text-foreground hover:bg-light-blue hover:text-primary"
                               )}
                               onClick={(e) => {
-                                if (child.children && !plumbingFlyoutOpen) {
+                                if (child.children && !activeFlyout) {
                                   e.preventDefault();
-                                  setPlumbingFlyoutOpen(true);
+                                  setActiveFlyout(child.label);
                                 } else {
                                   setServicesOpen(false);
+                                  setActiveFlyout(null);
                                 }
                               }}
                             >
                               {child.label}
-                              {child.children && <ChevronDown className={cn("h-3.5 w-3.5 -rotate-90 text-muted-foreground transition-transform", plumbingFlyoutOpen && "rotate-0")} />}
+                              {child.children && <ChevronDown className={cn("h-3.5 w-3.5 -rotate-90 text-muted-foreground transition-transform", activeFlyout === child.label && "rotate-0")} />}
                             </Link>
-                            {child.children && plumbingFlyoutOpen && (
+                            {child.children && activeFlyout === child.label && (
                               <div className="absolute z-50 pl-1.5" style={{ top: 0, left: "100%" }}>
                                 <div className="bg-white rounded-xl shadow-elevated border border-border py-2" style={{ minWidth: 200 }}>
                                   {child.children.map((gc, gi) => (
@@ -187,7 +195,7 @@ export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
                                         "block px-4 py-2.5 text-sm font-semibold transition-colors",
                                         isActive(gc.href) ? "text-primary bg-light-blue" : "text-foreground hover:bg-light-blue hover:text-primary"
                                       )}
-                                      onClick={() => { setServicesOpen(false); setPlumbingFlyoutOpen(false); }}
+                                      onClick={() => { setServicesOpen(false); setActiveFlyout(null); }}
                                     >
                                       {gc.label}
                                     </Link>
@@ -270,7 +278,20 @@ export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
                         <Link href="/services/plumbing/new-construction" onClick={closeMobile} className={cn("flex items-center px-12 py-2.5 text-sm", isActive("/services/plumbing/new-construction") ? "text-primary font-semibold bg-light-blue" : "text-foreground hover:text-primary hover:bg-light-blue")}>New Construction</Link>
                       </div>
                     )}
-                    <Link href="/services/hvac" onClick={closeMobile} className={cn("flex items-center px-8 py-2.5 text-sm font-semibold", isActive("/services/hvac") ? "text-primary bg-light-blue" : "text-foreground hover:bg-light-blue hover:text-primary")}>HVAC</Link>
+                    <button
+                      type="button"
+                      className={cn("flex items-center justify-between w-full px-8 py-2.5 text-sm font-semibold transition-colors", pathname.startsWith("/services/hvac") ? "text-primary" : "text-foreground hover:bg-light-blue hover:text-primary")}
+                      onClick={() => setMobHvacOpen(!mobHvacOpen)}
+                    >
+                      HVAC
+                      <ChevronDown className={cn("h-3.5 w-3.5 text-muted-foreground transition-transform", mobHvacOpen && "rotate-180")} />
+                    </button>
+                    {mobHvacOpen && (
+                      <div className="bg-white border-b border-border">
+                        <Link href="/services/hvac" onClick={closeMobile} className={cn("flex items-center px-12 py-2.5 text-sm", pathname === "/services/hvac" ? "text-primary font-semibold bg-light-blue" : "text-foreground hover:text-primary hover:bg-light-blue")}>HVAC Overview</Link>
+                        <Link href="/services/hvac/bryant-heating-cooling" onClick={closeMobile} className={cn("flex items-center px-12 py-2.5 text-sm", isActive("/services/hvac/bryant-heating-cooling") ? "text-primary font-semibold bg-light-blue" : "text-foreground hover:text-primary hover:bg-light-blue")}>Bryant Heating & Cooling</Link>
+                      </div>
+                    )}
                     <Link href="/services/radiant-heating" onClick={closeMobile} className={cn("flex items-center px-8 py-2.5 text-sm font-semibold", isActive("/services/radiant-heating") ? "text-primary bg-light-blue" : "text-foreground hover:bg-light-blue hover:text-primary")}>Radiant Heating</Link>
                     <Link href="/services/water-treatment" onClick={closeMobile} className={cn("flex items-center px-8 py-2.5 text-sm font-semibold", isActive("/services/water-treatment") ? "text-primary bg-light-blue" : "text-foreground hover:bg-light-blue hover:text-primary")}>Water Treatment</Link>
                   </div>
