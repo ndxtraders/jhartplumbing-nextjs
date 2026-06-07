@@ -1,26 +1,122 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* ── J. Hart Brand Palette ── */
+    --primary: 207 88% 35%;           /* Baltic Blue #0B5FA6 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 212 65% 24%;     /* Regal Navy #163B66 */
+
+    --navy: 216 72% 15%;              /* Prussian Blue #0B2143 */
+    --navy-deep: 214 76% 11%;         /* Prussian Blue #071A33 */
+    --navy-mid: 215 68% 19%;          /* #0F2A51 */
+
+    --cta: 355 73% 45%;               /* Flag Red #C71F2D */
+    --cta-hover: 355 73% 37%;
+    --cta-foreground: 0 0% 100%;
+
+    --off-white: 220 100% 98%;        /* Ghost White #F3F7FF */
+    --light-blue: 220 100% 96%;       /* Alice Blue #EAF1FF */
+    --steel: 212 40% 55%;             /* mid-tone cool blue */
+
+    --background: 0 0% 100%;
+    --foreground: 216 72% 15%;        /* = navy */
+
+    --card: 0 0% 100%;
+    --card-foreground: 216 72% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 72% 15%;
+
+    --secondary: 212 65% 24%;         /* Regal Navy for secondary buttons */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 100% 98%;            /* off-white */
+    --muted-foreground: 213 22% 44%;  /* muted body text */
+
+    --accent: 220 100% 96%;           /* light-blue */
+    --accent-foreground: 216 72% 15%;
+
+    --destructive: 355 73% 45%;       /* = cta red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 45% 87%;            /* light blue-grey */
+    --input: 216 45% 87%;
+    --ring: 207 88% 35%;              /* primary */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 207 88% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 100% 96%;
+    --sidebar-accent-foreground: 216 72% 15%;
+    --sidebar-border: 216 45% 87%;
+    --sidebar-ring: 207 88% 35%;
+  }
+
+  .dark {
+    --background: 214 76% 11%;
+    --foreground: 0 0% 98%;
+    --card: 214 76% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 214 76% 11%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 207 88% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 212 65% 24%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 215 68% 19%;
+    --muted-foreground: 212 40% 65%;
+    --accent: 215 68% 19%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 355 73% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 68% 19%;
+    --input: 215 68% 19%;
+    --ring: 207 88% 55%;
+    --sidebar-background: 214 76% 11%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 207 88% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 68% 19%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 215 68% 19%;
+    --sidebar-ring: 207 88% 55%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Pulse subtle animation for CTA buttons */
+  @keyframes pulse-subtle {
+    0%, 100% { box-shadow: 0 0 0 0 hsla(355, 73%, 45%, 0.4); }
+    50%      { box-shadow: 0 0 0 8px hsla(355, 73%, 45%, 0); }
+  }
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2.5s ease-in-out infinite;
+  }
 }
