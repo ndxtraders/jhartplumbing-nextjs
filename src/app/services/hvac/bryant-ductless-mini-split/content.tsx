@@ -101,6 +101,7 @@ export default function Page() {
 
       <Hero
         backgroundImage={hvacHeroBg}
+        imageClassName="object-[85%_center] md:object-center"
         heading={
           <>
             Bryant Ductless Mini-Split Systems{" "}

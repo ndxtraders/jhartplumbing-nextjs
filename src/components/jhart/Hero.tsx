@@ -14,6 +14,7 @@ interface HeroProps {
   primaryCTA?: { label: string; href: string; icon?: LucideIcon };
   secondaryCTA?: { label: string; href: string };
   backgroundImage?: string;
+  imageClassName?: string;
   children?: React.ReactNode;
   className?: string;
   rightContent?: React.ReactNode;
@@ -27,6 +28,7 @@ export function Hero({
   primaryCTA = { label: "Request Service", href: "/contact#cta-form" },
   secondaryCTA = { label: "Learn More", href: "#services" },
   backgroundImage,
+  imageClassName,
   children,
   className,
   rightContent,
@@ -38,7 +40,7 @@ export function Hero({
            <img
             src={backgroundImage}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover"
+            className={cn("absolute inset-0 h-full w-full object-cover", imageClassName)}
             fetchPriority="high"
             width={2000}
             height={1120}

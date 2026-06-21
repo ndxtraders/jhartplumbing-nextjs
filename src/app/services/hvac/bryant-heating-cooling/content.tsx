@@ -191,6 +191,7 @@ export default function Page() {
 
       <Hero
         backgroundImage={hvacHeroBg}
+        imageClassName="object-[70%_center] md:object-center"
         heading={
           <>
             Bryant Heating &amp; Cooling{" "}
