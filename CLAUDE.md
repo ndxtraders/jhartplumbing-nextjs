@@ -34,8 +34,7 @@ React source is at `../_source/src/`. When in doubt about content, wording, or l
 - Add schema markup to pages (Phase 2)
 - Change any page content or copy
 - Use next/image (Phase 2)
-- Deploy to Vercel (separate phase)
-- Push to the main GitHub branch
+- Push to the `main` branch without Rev's approval (`main` auto-deploys to production on Vercel; branch pushes auto-create previews, which are fine)
 - Run `shadcn add` (would clobber the customized ui/button.tsx)
 - Add a next-themes ThemeProvider
 
