@@ -16,6 +16,7 @@ import { ServiceCardGrid } from "@/components/jhart/ServiceCardGrid";
 import { ActionGrid } from "@/components/jhart/ActionGrid";
 import { FeatureGrid } from "@/components/jhart/FeatureGrid";
 import { SectionHeader } from "@/components/jhart/SectionHeader";
+import { WhereWeWork } from "@/components/jhart/WhereWeWork";
 import { TestimonialSpotlight } from "@/components/jhart/TestimonialSpotlight";
 import { FAQSection } from "@/components/jhart/FAQSection";
 import { CTAFormSection } from "@/components/jhart/CTAFormSection";
@@ -403,14 +404,7 @@ export default function Page() {
         columns={2}
       />
 
-      <section className="bg-background px-8 py-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionHeader
-            heading="Serving Sonora, Tuolumne County & Calaveras County"
-            description="Sonora, Twain Harte, Columbia, Jamestown, Tuolumne, Mi-Wuk Village, Pinecrest, Groveland, Chinese Camp, Don Pedro, Sierra Village, Angels Camp, and surrounding communities."
-          />
-        </div>
-      </section>
+      <WhereWeWork />
 
       <TestimonialSpotlight
         quote="New to Sonora and so thankful for the referral. J Hart is the best in town, not only for plumbing but also HVAC. Brian and JD were thorough, professional, and showed excellence in customer care."
