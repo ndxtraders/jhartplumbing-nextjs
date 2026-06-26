@@ -106,7 +106,6 @@ export default function Page() {
           {
             icon: Building2,
             title: "Tenant & Property Maintenance",
-            popular: true,
             services: [
               "Restroom repairs and maintenance",
               "Fixture replacements",

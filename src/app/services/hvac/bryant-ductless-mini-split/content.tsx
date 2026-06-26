@@ -172,7 +172,6 @@ export default function Page() {
           {
             icon: Home,
             title: "Single-Zone & Multi-Zone Systems",
-            popular: true,
             services: [
               "Single-zone (one indoor head, one room)",
               "Multi-zone (2–8 indoor heads on one outdoor unit)",

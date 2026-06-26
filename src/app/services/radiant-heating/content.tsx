@@ -83,7 +83,6 @@ export default function Page() {
           {
             icon: Settings,
             title: "Design & Installation",
-            popular: true,
             services: [
               "Complete radiant system design",
               "New construction installations",

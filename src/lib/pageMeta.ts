@@ -8,6 +8,10 @@ const PAGE_META: Record<string, PageMeta> = {
     title: "J. Hart Plumbing, Heating, Cooling & Water Treatment | Sonora, CA",
     description: "Sonora's trusted plumbing, HVAC, radiant heating & water treatment experts since 1984. Call (209) 533-1978.",
   },
+  "/services": {
+    title: "Plumbing, HVAC, Radiant & Water Treatment | J. Hart | Sonora, CA",
+    description: "Sonora's family-owned source for plumbing, heating, cooling, radiant, and water treatment since 1984. Serving Tuolumne & Calaveras County. (209) 533-1978.",
+  },
   "/services/plumbing": {
     title: "Plumbing Services | J. Hart | Sonora, CA",
     description: "Residential and commercial plumbing service, repair, and installation in Tuolumne County.",

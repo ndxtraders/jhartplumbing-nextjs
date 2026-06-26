@@ -156,7 +156,6 @@ export default function Page() {
           {
             icon: Snowflake,
             title: "AC Installation & Replacement",
-            popular: true,
             services: [
               "Full Bryant residential AC lineup (Evolution, Preferred, Legacy)",
               "Existing system removal and disposal",

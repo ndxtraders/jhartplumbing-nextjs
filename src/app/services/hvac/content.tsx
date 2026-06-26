@@ -103,7 +103,6 @@ export default function Page() {
           {
             icon: Snowflake,
             title: "Air Conditioning Repair",
-            popular: true,
             services: [
               "AC won't cool or won't turn on",
               "Refrigerant leaks and recharging",

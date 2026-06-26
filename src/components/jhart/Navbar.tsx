@@ -19,6 +19,7 @@ const defaultNavItems: NavItem[] = [
   {
     label: "Services",
     children: [
+      { label: "All Services", href: "/services" },
       {
         label: "Plumbing",
         href: "/services/plumbing",
@@ -50,7 +51,7 @@ interface NavbarProps {
 }
 
 // Pages that have an on-page #cta-form anchor
-const PAGES_WITH_CTA_FORM = ["/", "/contact", "/services/plumbing", "/services/plumbing/residential", "/services/plumbing/commercial", "/services/plumbing/new-construction", "/services/hvac", "/services/hvac/bryant-heating-cooling", "/services/hvac/bryant-ductless-mini-split", "/services/hvac/bryant-air-conditioners", "/services/hvac/bryant-heat-pumps", "/services/radiant-heating", "/services/water-treatment", "/design-system"];
+const PAGES_WITH_CTA_FORM = ["/", "/contact", "/services", "/services/plumbing", "/services/plumbing/residential", "/services/plumbing/commercial", "/services/plumbing/new-construction", "/services/hvac", "/services/hvac/bryant-heating-cooling", "/services/hvac/bryant-ductless-mini-split", "/services/hvac/bryant-air-conditioners", "/services/hvac/bryant-heat-pumps", "/services/radiant-heating", "/services/water-treatment", "/design-system"];
 
 export function Navbar({ items = defaultNavItems, className }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);

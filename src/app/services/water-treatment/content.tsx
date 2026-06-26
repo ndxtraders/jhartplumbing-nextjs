@@ -99,7 +99,6 @@ export default function Page() {
           {
             icon: Filter,
             title: "Reverse Osmosis (RO) Systems",
-            popular: true,
             services: [
               "Under-sink drinking water systems",
               "Point-of-use installations",

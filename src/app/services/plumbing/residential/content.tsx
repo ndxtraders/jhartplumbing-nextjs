@@ -111,7 +111,6 @@ export default function Page() {
           {
             icon: Droplets,
             title: "Leaks & Pipe Repairs",
-            popular: true,
             services: [
               "Leaking faucets, toilets, and fixtures",
               "Under-sink leaks",

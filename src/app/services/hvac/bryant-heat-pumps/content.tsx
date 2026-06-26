@@ -241,7 +241,6 @@ export default function Page() {
           {
             icon: Thermometer,
             title: "Heat Pump Installation & Replacement",
-            popular: true,
             services: [
               "Full Bryant residential heat pump lineup",
               "Existing AC + furnace removal",
