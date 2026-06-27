@@ -290,7 +290,7 @@ export default function Page() {
         heading="What Do You Need Help With?"
         items={[
           { icon: AlertTriangle, title: "Replacing an old AC and/or furnace", action: "If both are at end-of-life, a heat pump often replaces both in one purchase.", href: "#cta-form", linkLabel: "Request a callback" },
-          { icon: TrendingUp, title: "High heating bills (propane / oil / electric resistance)", action: "Heat pumps usually cut your heating bills a lot compared to these fuels.", href: "#cta-form", linkLabel: "Request a callback" },
+          { icon: TrendingUp, title: "High heating bills (propane / oil / electric resistance)", action: "Heat pumps can reduce heating costs by 50% or more compared to electric resistance — and typically 30–50% compared to propane or oil — depending on your local rates and system efficiency.", href: "#cta-form", linkLabel: "Request a callback" },
           { icon: Zap, title: "Going all-electric", action: "Heat pumps are the standard answer for whole-home all-electric heating.", href: "#cta-form", linkLabel: "Request a callback" },
           { icon: Home, title: "New construction / addition", action: "Designing from scratch is the easiest path — one system, one fuel.", href: "#cta-form", linkLabel: "Request a callback" },
         ]}
@@ -398,7 +398,7 @@ export default function Page() {
         features={[
           { icon: Award, title: "Bryant Factory Authorized Dealer", desc: "Factory-trained on Bryant heat-pump-specific procedures (reversing valves, defrost cycles, cold-climate sizing)." },
           { icon: Gauge, title: "Right-sized, cold-climate-aware installs", desc: "Manual J per home, with elevation correction and an honest cold-climate vs. dual-fuel recommendation." },
-          { icon: Users, title: "40 years, four generations", desc: "Family-owned since 1984. Same name on the truck, same accountability." },
+          { icon: Users, title: "Four generations local", desc: "Family-owned since 1984. Same name on the truck, same accountability." },
           { icon: ShieldCheck, title: "Licensed & insured", desc: "CA Lic #459194 · NV Lic #77957." },
         ]}
         columns={2}
@@ -422,3 +422,4 @@ export default function Page() {
     </div>
   );
 };
+
