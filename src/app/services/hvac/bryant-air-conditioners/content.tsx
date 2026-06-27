@@ -136,7 +136,7 @@ export default function Page() {
         heading="Reliable, Efficient Cooling, Installed Right"
         paragraphs={[
           <>
-            Bryant has been making air conditioners since 1904 and is one of the most established residential AC brands in North America. Their current lineup covers three tiers: <strong className="text-navy">Evolution™</strong> variable-speed at the top, <strong className="text-navy">Preferred™</strong> two-stage in the middle, and <strong className="text-navy">Legacy™</strong> single-stage for value-focused replacements.{" "}
+            We're Sonora's Bryant Factory Authorized Dealer — and we install the full Bryant residential AC lineup: <strong className="text-navy">Evolution™</strong> variable-speed at the top, <strong className="text-navy">Preferred™</strong> two-stage in the middle, and <strong className="text-navy">Legacy™</strong> single-stage for value-focused replacements. Bryant has been making residential cooling equipment since 1904; J. Hart has been installing it here since 1984.{" "}
           </>,
           <>
             We're a Bryant Factory Authorized Dealer for Sonora and the Motherlode. Our technicians are factory-trained on Bryant equipment and you get access to Bryant's enhanced warranties when systems are registered.{" "}
@@ -341,3 +341,4 @@ export default function Page() {
     </div>
   );
 };
+
