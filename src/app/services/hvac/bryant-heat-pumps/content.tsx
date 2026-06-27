@@ -45,7 +45,7 @@ const faqItems = [
   {
     question: "Is a heat pump better than an AC?",
     answer:
-      "For cooling, they're the same — a heat pump cools exactly like an AC. The difference is heating: it replaces your furnace too and runs on electricity. Whether it's the right call depends on your current furnace, your fuel costs, and what rebates you qualify for.",
+      "For cooling, a heat pump is similar to an AC. The difference is heating: it replaces your furnace too and runs on electricity. Whether it's the right call depends on your current furnace, your fuel costs, and what rebates you qualify for. For the cooling-only comparison, see our Bryant Air Conditioners page.",
   },
   {
     question: "Is a heat pump enough to heat a house in our climate?",
@@ -68,6 +68,24 @@ const faqItems = [
       "Usually yes if you're replacing electric resistance, propane, or oil heat — the savings are substantial. If you're replacing low-cost natural gas, the savings are modest in heating but still real in cooling. We model your specific situation honestly at estimate.",
   },
 ];
+
+const displayFaqItems = faqItems.map((item) =>
+  item.question === "Is a heat pump better than an AC?"
+    ? {
+        ...item,
+        answer: (
+          <>
+            For cooling, a heat pump is similar to an AC. The difference is heating: it replaces your
+            furnace too and runs on electricity. Whether it&apos;s the right call depends on your
+            current furnace, your fuel costs, and what rebates you qualify for.{" "}
+            <Link href="/services/hvac/bryant-air-conditioners" className="underline">
+              For the cooling-only comparison, see our Bryant Air Conditioners page.
+            </Link>
+          </>
+        ),
+      }
+    : item
+);
 
 export default function Page() {
   const serviceSchema = buildService({
@@ -412,7 +430,7 @@ export default function Page() {
         service="HVAC · 2025"
       />
 
-      <FAQSection className="bg-background" items={faqItems} />
+      <FAQSection className="bg-background" items={displayFaqItems} />
 
       <div id="cta-form">
         <CTAFormSection />
