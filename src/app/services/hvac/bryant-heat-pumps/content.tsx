@@ -45,7 +45,7 @@ const faqItems = [
   {
     question: "Is a heat pump better than an AC?",
     answer:
-      "For cooling, they're the same — a heat pump cools exactly like an AC. The difference is heating: it replaces your furnace too and runs on electricity. Whether it's the right call depends on your current furnace, your fuel costs, and what rebates you qualify for.",
+      "For cooling, a heat pump is similar to an AC. The difference is heating: it replaces your furnace too and runs on electricity. Whether it's the right call depends on your current furnace, your fuel costs, and what rebates you qualify for. For the cooling-only comparison, see our Bryant Air Conditioners page.",
   },
   {
     question: "Is a heat pump enough to heat a house in our climate?",
@@ -68,6 +68,24 @@ const faqItems = [
       "Usually yes if you're replacing electric resistance, propane, or oil heat — the savings are substantial. If you're replacing low-cost natural gas, the savings are modest in heating but still real in cooling. We model your specific situation honestly at estimate.",
   },
 ];
+
+const displayFaqItems = faqItems.map((item) =>
+  item.question === "Is a heat pump better than an AC?"
+    ? {
+        ...item,
+        answer: (
+          <>
+            For cooling, a heat pump is similar to an AC. The difference is heating: it replaces your
+            furnace too and runs on electricity. Whether it&apos;s the right call depends on your
+            current furnace, your fuel costs, and what rebates you qualify for.{" "}
+            <Link href="/services/hvac/bryant-air-conditioners" className="underline">
+              For the cooling-only comparison, see our Bryant Air Conditioners page.
+            </Link>
+          </>
+        ),
+      }
+    : item
+);
 
 export default function Page() {
   const serviceSchema = buildService({
@@ -290,7 +308,7 @@ export default function Page() {
         heading="What Do You Need Help With?"
         items={[
           { icon: AlertTriangle, title: "Replacing an old AC and/or furnace", action: "If both are at end-of-life, a heat pump often replaces both in one purchase.", href: "#cta-form", linkLabel: "Request a callback" },
-          { icon: TrendingUp, title: "High heating bills (propane / oil / electric resistance)", action: "Heat pumps usually cut your heating bills a lot compared to these fuels.", href: "#cta-form", linkLabel: "Request a callback" },
+          { icon: TrendingUp, title: "High heating bills (propane / oil / electric resistance)", action: "Heat pumps can reduce heating costs by 50% or more compared to electric resistance — and typically 30–50% compared to propane or oil — depending on your local rates and system efficiency.", href: "#cta-form", linkLabel: "Request a callback" },
           { icon: Zap, title: "Going all-electric", action: "Heat pumps are the standard answer for whole-home all-electric heating.", href: "#cta-form", linkLabel: "Request a callback" },
           { icon: Home, title: "New construction / addition", action: "Designing from scratch is the easiest path — one system, one fuel.", href: "#cta-form", linkLabel: "Request a callback" },
         ]}
@@ -398,7 +416,7 @@ export default function Page() {
         features={[
           { icon: Award, title: "Bryant Factory Authorized Dealer", desc: "Factory-trained on Bryant heat-pump-specific procedures (reversing valves, defrost cycles, cold-climate sizing)." },
           { icon: Gauge, title: "Right-sized, cold-climate-aware installs", desc: "Manual J per home, with elevation correction and an honest cold-climate vs. dual-fuel recommendation." },
-          { icon: Users, title: "40 years, four generations", desc: "Family-owned since 1984. Same name on the truck, same accountability." },
+          { icon: Users, title: "Four generations local", desc: "Family-owned since 1984. Same name on the truck, same accountability." },
           { icon: ShieldCheck, title: "Licensed & insured", desc: "CA Lic #459194 · NV Lic #77957." },
         ]}
         columns={2}
@@ -412,7 +430,7 @@ export default function Page() {
         service="HVAC · 2025"
       />
 
-      <FAQSection className="bg-background" items={faqItems} />
+      <FAQSection className="bg-background" items={displayFaqItems} />
 
       <div id="cta-form">
         <CTAFormSection />
@@ -422,3 +440,4 @@ export default function Page() {
     </div>
   );
 };
+
