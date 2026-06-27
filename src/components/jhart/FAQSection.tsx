@@ -7,7 +7,7 @@ import { FAQAccordion } from "./FAQAccordion";
 
 interface FAQItem {
   question: string;
-  answer: string;
+  answer: string | React.ReactNode;
 }
 
 interface FAQSectionProps {
